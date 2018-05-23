@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "heroku local:start",
+    "start": "node ./bin/www",
     "super": "supervisor ./bin/www",
     "start_old": "node ./bin/www",
     "migrate_local": "sequelize db:migrate --url sqlite://$(pwd)/quiz.sqlite",
@@ -20,21 +20,22 @@
     "npm": "5.6.0"
   },
   "dependencies": {
-    "body-parser": "~1.18.2",
+    "body-parser": "^1.18.2",
     "connect-session-sequelize": "^5.0.1",
-    "cookie-parser": "~1.4.3",
+    "cookie-parser": "^1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
-    "express": "~4.15.5",
+    "express": "^4.16.3",
     "express-flash": "0.0.2",
     "express-partials": "^0.3.0",
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
-    "morgan": "~1.9.0",
+    "morgan": "^1.9.0",
     "pg": "7.4.0",
     "sequelize": "^4.37.5",
     "sequelize-cli": "^4.0.0",
     "serve-favicon": "~2.4.5",
+
     "supervisor": "^0.12.0"
   },
   "devDependencies": {

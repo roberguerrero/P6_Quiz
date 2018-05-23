@@ -53,7 +53,8 @@ router.get('/author', (req, res, next) => {
 
 
 // Autoload for routes using :quizId
-router.param('quizId', quizController.load);
+
+router.param('quizId', quizController.load); // Cuando en la URL haya un parámetro con el id, llamo a load
 router.param('userId', userController.load);
 router.param('tipId',  tipController.load);
 
@@ -122,6 +123,7 @@ router.get('/quizzes/:quizId(\\d+)/check', quizController.check);
 
 
 
+<<<<<<< HEAD
 router.post('/quizzes/:quizId(\\d+)/tips',
     sessionController.loginRequired,
     tipController.create);
@@ -133,6 +135,10 @@ router.delete('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)',
     sessionController.loginRequired,
     quizController.adminOrAuthorRequired,
     tipController.destroy);
+=======
+router.get('/quizzes/randomplay', quizController.randomplay);
+router.get('/quizzes/randomcheck/:quizId(\\d+)', quizController.randomcheck);
+>>>>>>> practica6
 
 
 module.exports = router;
