@@ -11,7 +11,7 @@
 
             <li>
                 <%= tip.text %>
-                <small> (created by <%tip.author ? tip.author.username : "Anonymous" %></small>
+                <small> (by <%= tip.author ? tip.author.username : "Anonymous" %>)</small>
                 <% if (!accepted && (isAdmin || isQuizAuthor)) { %>
 
                     <a href="/quizzes/<%= quizId %>/tips/<%= tip.id %>/accept?_method=PUT">
