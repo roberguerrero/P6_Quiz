@@ -36,7 +36,7 @@ exports.adminOrAuthorRequired = (req, res, next) => {
     const isAuthor = req.quiz.authorId === req.session.user.id;
 
     if (isAdmin || isAuthor) {
-        next();
+        next(); // Si se cumple, paso al siguiente middleware
     } else {
         console.log('Prohibited operation: The logged in user is not the author of the quiz, nor an administrator.');
         res.send(403);

@@ -12,6 +12,7 @@
             <li>
                 <%= tip.text %>
                 <small> (by <%= tip.author ? tip.author.username : "Anonymous" %>)</small>
+
                 <% if (!accepted && (isAdmin || isQuizAuthor)) { %>
 
                     <a href="/quizzes/<%= quizId %>/tips/<%= tip.id %>/accept?_method=PUT">
@@ -21,6 +22,10 @@
                 <% } %>
 
                 <% if (isAdmin || isQuizAuthor) { %>
+
+                    <a href="/quizzes/<%= quizId %>/tips/<%= tip.id %>/edit"> <!-- Ruta de edit: PUT /quizzes/:quizId/tips/:tipId/edit . Como es get no tengo que poner ?_method=PUT-->
+                        <button>Edit</button>
+                    </a>
 
                     <a href="/quizzes/<%= quizId %>/tips/<%= tip.id %>?_method=DELETE">
                         <button>Delete</button>

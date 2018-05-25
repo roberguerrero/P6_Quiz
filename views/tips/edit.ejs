@@ -1,0 +1,18 @@
+<h1>
+    Edit Tip:
+</h1>
+
+<form method="post" action="/quizzes/<%= quiz.id %>/tips/<%=tip.id%>?_method=PUT" > <!-- Ruta de update: PUT /quizzes/:quizId/tips/:tipId -->
+
+    <div class="wideRow">
+        <label for="text"  class="itemNarrow">Tip:</label>
+        <input type="text" class="itemWide" id="text" name="text" value="<%= tip.text %>" placeholder="Tip" autocomplete="off"/>
+        <!-- name="text" porque en la base de datos el texto de tip se llamaba tip.text, se ve en models/tip-->
+    </div>
+
+    <br/>
+    <a href="/goback"><button type="button">Cancel</button></a>
+
+    <input type="submit" value="Save">
+
+</form>
