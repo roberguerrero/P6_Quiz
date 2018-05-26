@@ -88,7 +88,9 @@ exports.update = (req, res, next) => {
                                             // el name="text" por lo que es body.text
     tip.text = body.text;
 
-    tip.save({fields: ["text"]}) //Valdria con save()
+    tip.accepted = false;   // Cuando lo edito, tiene que volver a aceptarse
+
+    tip.save({fields: ["text", "accepted"]})
         .then(tip => { //El tip que he guardado
             req.flash('success', 'Tip edited successfully.');
                 // Flash: para guardar un texto y poder mostrarlo en el futuro
@@ -96,13 +98,12 @@ exports.update = (req, res, next) => {
                 // Como estoy haciendo un redirect, ese mensaje se perdería porque es de una petición anterior y estoy cambiando de pagina.
                 // De esta manera tengo el mensaje accesible aun cambiando de pagina. Se guardan hasta la seguiente pagina que voy a mostrar, hasta que renderice la siguiente pagina.
 
-
             res.redirect('/goback/');    // Con goback redirige a la ultima pagina principal visitada
         })
         .catch(Sequelize.ValidationError, error => {
             req.flash('error', 'There are errors in the form:');
             error.errors.forEach(({message}) => req.flash('error', message));
-            res.render('tip/edit', {tip, quiz}); // Para rellenarlo bien cuando ha habido un fallo
+            res.render('tips/edit', {tip, quiz}); // Para rellenarlo bien cuando ha habido un fallo
         })
         .catch(error => {
             req.flash('error', 'Error editing the tip: ' + error.message);
